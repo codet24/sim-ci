@@ -1,0 +1,11 @@
+[06-Feb-2018 09:19:35 Asia/Jakarta] PHP Fatal error:  Call to undefined method User_model::get_detail() in /home/adminpmui/public_html/application/modules/pos/controllers/Kartu_sales_stok.php on line 32
+[06-Feb-2018 09:19:38 Asia/Jakarta] PHP Fatal error:  Call to undefined method User_model::get_detail() in /home/adminpmui/public_html/application/modules/pos/controllers/Kartu_sales_stok.php on line 32
+[06-Feb-2018 09:25:05 Asia/Jakarta] PHP Fatal error:  Call to undefined method User_model::get_detail() in /home/adminpmui/public_html/application/modules/pos/controllers/Kartu_sales_stok.php on line 32
+[08-Feb-2018 10:18:30 UTC] PHP Parse error:  syntax error, unexpected '>' in /home/adminpmui/public_html/application/modules/pos/views/email.php on line 227
+[20-Feb-2018 16:53:15 Asia/Jakarta] PHP Fatal error:  Call to undefined method User_model::user() in /home/adminpmui/public_html/bonfire/modules/users/models/User_model.php on line 928
+[09-Mar-2018 15:05:35 Asia/Jakarta] PHP Fatal error:  Call to undefined method CI_DB_mysqli_driver::error_message() in /home/demopmuicoid/public_html/application/modules/pos/controllers/Adjust_stock.php on line 150
+[09-Mar-2018 15:05:57 Asia/Jakarta] PHP Fatal error:  Call to undefined method CI_DB_mysqli_driver::error_message() in /home/demopmuicoid/public_html/application/modules/pos/controllers/Adjust_stock.php on line 150
+[10-Mar-2018 16:40:47 Asia/Jakarta] PHP Fatal error:  Call to undefined method CI_DB_mysqli_driver::error_message() in /home/demopmuicoid/public_html/application/modules/pos/controllers/Adjust_stock.php on line 150
+[10-Mar-2018 16:40:53 Asia/Jakarta] PHP Fatal error:  Call to undefined method CI_DB_mysqli_driver::error_message() in /home/demopmuicoid/public_html/application/modules/pos/controllers/Adjust_stock.php on line 150
+[10-Mar-2018 16:40:59 Asia/Jakarta] PHP Fatal error:  Call to undefined method CI_DB_mysqli_driver::error_message() in /home/demopmuicoid/public_html/application/modules/pos/controllers/Adjust_stock.php on line 150
+[20-Nov-2018 19:41:38 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '<' in /home/webcsrpilarinti/public_html/test_mail.php on line 7

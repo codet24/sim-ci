@@ -1,0 +1,183 @@
+<?php
+//$site_open = $this->settings_lib->item('auth.allow_register');
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <!-- Favicon icon -->
+  <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url('themes/adminpress/') ?>assets/images/favicon.png">
+  <title><?php echo lang('us_login'); ?></title>
+  <!-- Bootstrap Core CSS -->
+  <link href="<?php echo base_url('themes/adminpress/') ?>assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link href="<?php echo base_url('themes/adminpress/') ?>css/style.css" rel="stylesheet">
+  <!-- You can change the theme colors from here -->
+  <link href="<?php echo base_url('themes/adminpress/') ?>css/colors/blue.css" id="theme" rel="stylesheet">
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+      <svg class="circular" viewBox="25 25 50 50">
+        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+      </svg>
+    </div>
+    <!-- ============================================================== -->
+    <!-- horizontal wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <section id="wrapper">
+      <div class="login-register" style="background-color: #2980b9">
+        <div class="login-box card">
+          <div class="card-body">
+            <!-- <form class="form-horizontal form-material" id="loginform" action="index.html"> -->
+            <?php echo Template::message(); ?>
+
+            <?php
+            if (validation_errors()) :
+              ?>
+            <h1><?php echo validation_errors(); ?></h1>
+          <?php endif; ?>
+
+          <?php echo form_open(LOGIN_URL, array('autocomplete' => 'off')); ?>
+          <h3 class="box-title m-b-20">Sign In</h3>
+          <div class="form-group <?php echo iif( form_error('login') , 'error') ;?>">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">
+                  <i class="ti-email"></i>
+                </span>
+              </div>
+              <input class="form-control" type="text" required="" name="login" id="login_value" value="<?php echo set_value('login'); ?>" 
+              tabindex="1" placeholder="<?php echo $this->settings_lib->item('auth.login_type') == 'both' ? lang('bf_username') .'/'. lang('bf_email') : ucwords($this->settings_lib->item('auth.login_type')) ?>"> 
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group <?php echo iif( form_error('password') , 'error') ;?>">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">
+                  <i class="ti-lock"></i>
+                </span>
+              </div>
+              <input class="form-control" type="password" required="" name="password" id="password" value="" tabindex="2" placeholder="<?php echo lang('bf_password'); ?>">
+              
+            </div>
+          </div>
+         <!--  <div class="form-group  <?php echo iif( form_error('login') , 'error') ;?>">
+            <div class="col-xs-12">
+              <input class="form-control" type="text" required="" name="login" id="login_value" value="<?php echo set_value('login'); ?>" 
+              tabindex="1" placeholder="<?php echo $this->settings_lib->item('auth.login_type') == 'both' ? lang('bf_username') .'/'. lang('bf_email') : ucwords($this->settings_lib->item('auth.login_type')) ?>"> 
+            </div>
+          </div> -->
+         <!--  <div class="form-group <?php echo iif( form_error('password') , 'error') ;?>">
+            <div class="col-xs-12">
+              <input class="form-control" type="password" required="" name="password" id="password" value="" tabindex="2" placeholder="<?php echo lang('bf_password'); ?>">
+            </div>
+          </div> -->
+          <?php if ($this->settings_lib->item('auth.allow_remember')) : ?>
+            <div class="form-group row">
+              <div class="col-md-12 font-14">
+                <div class="checkbox checkbox-primary pull-left p-t-0">
+                  <input id="checkbox-signup" type="checkbox" name="remember_me" id="remember_me" value="1" tabindex="3">
+                  <label for="checkbox-signup"> <?php echo lang('us_remember_note'); ?> </label>
+                </div> <a href="javascript:void(0)" id="to-recover" class="text-dark pull-right"><!-- <i class="fa fa-lock m-r-5"></i> --> Forgot pwd?</a>
+              </div>
+            </div>
+
+          <?php endif; ?>
+
+          <div class="form-group text-center m-t-20">
+            <div class="col-xs-12">
+              <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" type="submit" name="log-me-in" id="submit" value="<?php e(lang('us_let_me_in')); ?>">Log In</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 m-t-10 text-center">
+              <div class="social">
+                <a href="javascript:void(0)" class="btn  btn-facebook" data-toggle="tooltip" title="Login with Facebook"> <i aria-hidden="true" class="fa fa-facebook"></i> </a>
+                <a href="javascript:void(0)" class="btn btn-googleplus" data-toggle="tooltip" title="Login with Google"> <i aria-hidden="true" class="fa fa-google-plus"></i> </a>
+              </div>
+            </div>
+          </div>
+          <div class="form-group m-b-0">
+            <div class="col-sm-12 text-center">
+              <div>Don't have an account? <a href="<?php echo site_url(REGISTER_URL); ?>" class="text-info m-l-5"><b>Sign Up</b></a></div>
+            </div>
+          </div>
+        </form>
+        <form class="form-horizontal" id="recoverform" action="index.html">
+          <div class="form-group ">
+            <div class="col-xs-12">
+              <h3>Recover Password</h3>
+              <p class="text-muted">Enter your Email and instructions will be sent to you! </p>
+            </div>
+          </div>
+          <div class="form-group ">
+            <div class="col-xs-12">
+              <input class="form-control" type="text" required="" placeholder="Email"> </div>
+            </div>
+            <div class="form-group text-center m-t-20">
+              <div class="col-xs-12">
+                <button class="btn btn-primary btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Reset</button>
+              </div>
+            </div>
+            <!-- </form> -->
+            <?php echo form_close(); ?>
+
+            <?php // show for Email Activation (1) only
+            if ($this->settings_lib->item('auth.user_activation_method') == 1) : ?>
+            <!-- Activation Block -->
+            <p style="text-align: left" class="well">
+              <?php echo lang('bf_login_activate_title'); ?><br />
+              <?php
+              $activate_str = str_replace('[ACCOUNT_ACTIVATE_URL]',anchor('/activate', lang('bf_activate')),lang('bf_login_activate_email'));
+              $activate_str = str_replace('[ACTIVATE_RESEND_URL]',anchor('/resend_activation', lang('bf_activate_resend')),$activate_str);
+              echo $activate_str; ?>
+            </p>
+          <?php endif; ?>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ============================================================== -->
+  <!-- End Wrapper -->
+  <!-- ============================================================== -->
+  <!-- ============================================================== -->
+  <!-- All Jquery -->
+  <!-- ============================================================== -->
+  <script src="<?php echo base_url('themes/adminpress/') ?>assets/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap tether Core JavaScript -->
+  <script src="<?php echo base_url('themes/adminpress/') ?>assets/plugins/bootstrap/js/popper.min.js"></script>
+  <script src="<?php echo base_url('themes/adminpress/') ?>assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+  <!-- slimscrollbar scrollbar JavaScript -->
+  <script src="<?php echo base_url('themes/adminpress/') ?>js/jquery.slimscroll.js"></script>
+  <!--Wave Effects -->
+  <script src="<?php echo base_url('themes/adminpress/') ?>js/waves.js"></script>
+  <!--Menu sidebar -->
+  <script src="<?php echo base_url('themes/adminpress/') ?>js/sidebarmenu.js"></script>
+  <!--stickey kit -->
+  <script src="<?php echo base_url('themes/adminpress/') ?>assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+  <script src="<?php echo base_url('themes/adminpress/') ?>assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+  <!--Custom JavaScript -->
+  <script src="<?php echo base_url('themes/adminpress/') ?>js/custom.min.js"></script>
+  <!-- ============================================================== -->
+  <!-- Style switcher -->
+  <!-- ============================================================== -->
+  <script src="<?php echo base_url('themes/adminpress/') ?>assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+</body>
+
+</html>
